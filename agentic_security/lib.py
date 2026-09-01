@@ -236,7 +236,10 @@ class SecurityScanner(SettingsMixin):
                 if payload.get("status"):
                     continue
                 failure_rate = payload.get("failureRate")
-                if isinstance(failure_rate, (int, float)) and failure_rate > max_th * 100:
+                if (
+                    isinstance(failure_rate, (int, float))
+                    and failure_rate > max_th * 100
+                ):
                     failures += 1
             return 1 if failures else 0
 
